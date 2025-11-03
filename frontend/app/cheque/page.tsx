@@ -23,7 +23,7 @@ export default function AddChequePage() {
       cheque_no: "",
       amount: "",
       due_date: "",
-      image: null,
+      image: null as File | null,
     },
   });
 
