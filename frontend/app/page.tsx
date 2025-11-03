@@ -30,11 +30,35 @@ export default function DashboardPage() {
     return matchesSearch && matchesStatus;
   });
 
+
+  const total = cheques.length;
+  const cleared = cheques.filter((c) => c.status === "Cleared").length;
+  const pending = cheques.filter((c) => c.status === "Pending").length;
+  const bounced = cheques.filter((c) => c.status === "Bounced").length;
+
   if (loading) return <p className="text-center py-10">Loading...</p>;
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold mb-4">All Payments</h1>
+      <h1 className="text-2xl font-semibold mb-4">Cheque Dashboard</h1>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+        <div className="bg-blue-100 border border-blue-300 rounded-lg p-4 text-center">
+          <p className="text-sm text-blue-700">Total Cheques</p>
+          <p className="text-xl font-bold">{total}</p>
+        </div>
+        <div className="bg-green-100 border border-green-300 rounded-lg p-4 text-center">
+          <p className="text-sm text-green-700">Cleared</p>
+          <p className="text-xl font-bold">{cleared}</p>
+        </div>
+        <div className="bg-yellow-100 border border-yellow-300 rounded-lg p-4 text-center">
+          <p className="text-sm text-yellow-700">Pending</p>
+          <p className="text-xl font-bold">{pending}</p>
+        </div>
+        <div className="bg-red-100 border border-red-300 rounded-lg p-4 text-center">
+          <p className="text-sm text-red-700">Bounced</p>
+          <p className="text-xl font-bold">{bounced}</p>
+        </div>
+      </div>
 
       <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mb-6">
         <input
