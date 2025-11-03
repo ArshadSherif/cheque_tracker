@@ -36,7 +36,22 @@ export default function DashboardPage() {
   const pending = cheques.filter((c) => c.status === "Pending").length;
   const bounced = cheques.filter((c) => c.status === "Bounced").length;
 
-  if (loading) return <p className="text-center py-10">Loading...</p>;
+   if (loading)
+     return (
+       <div className="space-y-4 animate-pulse">
+         {[...Array(4)].map((_, i) => (
+           <div
+             key={i}
+             className="p-4 border border-gray-200 rounded-xl bg-gray-50"
+           >
+             <div className="h-4 bg-gray-200 rounded w-1/3 mb-3"></div>
+             <div className="h-3 bg-gray-200 rounded w-2/3 mb-2"></div>
+             <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+           </div>
+         ))}
+       </div>
+     );
+
 
   return (
     <div>
